@@ -47,7 +47,8 @@ module.exports = (_, argv) => ({
         shell: 'shell@http://localhost:4000/remoteEntry.js'
       },
       exposes: {
-        './App' : './src/App.tsx'
+        './App' : './src/App.tsx',
+        './store' : './src/App.tsx'
       },
       shared: {
         ...deps,

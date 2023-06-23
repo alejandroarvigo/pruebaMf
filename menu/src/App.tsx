@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 
-import { useGetShellContext } from "shell/store"
-
 import "./index.css";
+import { ShellContext } from "./store";
 
 const App = () => {
-  const { logFunction } = useGetShellContext();
-  console.log(logFunction);
+
+  const {logFunction} = useContext(ShellContext)
+
   return (
     <div className="container">
       <button onClick={logFunction}>APRETA EL BOTON2</button>
