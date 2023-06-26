@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 
-import { useGetShellContext } from "shell/store"
-
 import "./index.css";
+// @ts-ignore
+import { NameContextProvider } from 'context';
+
+const Welcome = () => {
+  const name = React.useContext(NameContextProvider);
+
+  return <p>Welcome, {name}</p>;
+};
 
 const App = () => {
-  const { logFunction } = useGetShellContext();
-  console.log(logFunction);
   return (
-    <div className="container">
-      <button onClick={logFunction}>APRETA EL BOTON2</button>
-    </div>
+    <NameContextProvider.Provider value="Billy">
+      <div className="container">
+        <Welcome />
+      </div>
+    </NameContextProvider.Provider>
   );
 }
 ReactDOM.render(<App />, document.getElementById("app"));

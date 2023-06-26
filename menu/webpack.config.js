@@ -43,11 +43,8 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "menu",
       filename: "remoteEntry.js",
-      remotes: {
-        shell: 'shell@http://localhost:4000/remoteEntry.js'
-      },
       exposes: {
-        './App' : './src/App.tsx'
+        './App': './src/App.tsx'
       },
       shared: {
         ...deps,
@@ -59,6 +56,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        context: {
+          singleton: true,
+        }
       },
     }),
     new HtmlWebPackPlugin({

@@ -1,22 +1,22 @@
 import React, { Suspense } from "react";
+import { NameContextProvider } from 'context';
+
 import ReactDOM from "react-dom";
 
 import "./index.css";
-import { ShellContextProvider } from './store'
-import Child from "./components/Child";
+import Aber from "./components/Aber";
 
-//@ts-ignores
-const Menu = React.lazy(() => import('menu/App'));
+
 
 const App = () => (
   <div className="container">
-    <Child />
-    <Suspense fallback={<div>loading...</div>}>
-      <Menu />
-    </Suspense>
+    <Aber />
   </div>
 );
 ReactDOM.render(
-  <ShellContextProvider>
+  <NameContextProvider.Provider value="Gustavo">
     <App />
-  </ShellContextProvider>, document.getElementById("app"));
+  </NameContextProvider.Provider>
+  , document.getElementById("app"));
+
+

@@ -44,10 +44,7 @@ module.exports = (_, argv) => ({
       name: "shell",
       filename: "remoteEntry.js",
       remotes: {
-        menu: 'menu@http://localhost:4001/remoteEntry.js'
-      },
-      exposes: {
-        './store': './src/store.tsx'
+        menu: 'menu@http://localhost:4001/remoteEntry.js',
       },
       shared: {
         ...deps,
@@ -59,6 +56,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        context: {
+          singleton: true,
+        }
       },
     }),
     new HtmlWebPackPlugin({
