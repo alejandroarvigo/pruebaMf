@@ -1,16 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { useGetShellContext } from "shell/store"
+import { useStore } from "shell/store"
 
 import "./index.css";
 
 const App = () => {
-  const { logFunction } = useGetShellContext();
-  console.log(logFunction);
+  const { bears, increasePopulation, removeAllBears }: any = useStore();
   return (
     <div className="container">
-      <button onClick={logFunction}>APRETA EL BOTON2</button>
+      <div>cantidad de bears desde el host: {bears}</div>
+      <button onClick={increasePopulation}>
+        Agregar
+      </button>
+      <button onClick={removeAllBears}>
+        Reset
+      </button>
     </div>
   );
 }
