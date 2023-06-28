@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useEffect } from "react";
-import { useGetShellContext } from "../store";
+
+//@ts-ignores
+const CustomButton = React.lazy(() => import('menu/CustomButton'));
 
 const Child = () => {
-    const { logFunction } = useGetShellContext();
-  
-    useEffect(() => {
-      console.log('CHILD**********************')  
-      logFunction(); // Debería imprimir "Saludos desde el hostingg"
-      console.log('CHILD**********************')  
-    }, []);
-  
-    return <div>Child Component</div>;
+
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <CustomButton store={{logFunction: ()=> {console.log('Llega por parameters desde el host')}}}/>
+    </Suspense>
+
+  );
 }
- 
+
 export default Child;
 

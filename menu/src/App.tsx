@@ -1,17 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { useGetShellContext } from "shell/store"
-
 import "./index.css";
+import WrapperCustomButton from "./components/CustomButton";
 
 const App = () => {
-  const { logFunction } = useGetShellContext();
-  console.log(logFunction);
   return (
-    <div className="container">
-      <button onClick={logFunction}>APRETA EL BOTON2</button>
-    </div>
+    <WrapperCustomButton store={{logFunction: ()=> {console.log('Llega por parameters')}}} />
   );
 }
 ReactDOM.render(<App />, document.getElementById("app"));

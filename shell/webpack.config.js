@@ -46,9 +46,7 @@ module.exports = (_, argv) => ({
       remotes: {
         menu: 'menu@http://localhost:4001/remoteEntry.js'
       },
-      exposes: {
-        './store': './src/store.tsx'
-      },
+
       shared: {
         ...deps,
         react: {

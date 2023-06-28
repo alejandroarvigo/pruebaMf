@@ -43,11 +43,8 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "menu",
       filename: "remoteEntry.js",
-      remotes: {
-        shell: 'shell@http://localhost:4000/remoteEntry.js'
-      },
       exposes: {
-        './App' : './src/App.tsx'
+        './CustomButton' : './src/components/CustomButton.tsx'
       },
       shared: {
         ...deps,
