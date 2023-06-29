@@ -44,7 +44,7 @@ module.exports = (_, argv) => ({
       name: "menu",
       filename: "remoteEntry.js",
       exposes: {
-        './App': './src/App.tsx'
+        './Welcome': './src/components/Welcome.tsx'
       },
       shared: {
         ...deps,
@@ -56,8 +56,9 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
-        context: {
-          singleton: true,
+        'shared-context_shared-library': {
+          import: 'shared-context_shared-library',
+          requiredVersion: require('../shared/package.json').version,
         }
       },
     }),

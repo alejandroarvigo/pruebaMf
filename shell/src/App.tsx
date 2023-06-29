@@ -1,22 +1,20 @@
-import React, { Suspense } from "react";
-import { NameContextProvider } from 'context';
+import React from "react";
 
 import ReactDOM from "react-dom";
+import RemoteWelcome from "./components/RemoteWelcome"
 
 import "./index.css";
-import Aber from "./components/Aber";
-
-
+import { NameContextProvider } from "shared-context_shared-library";
 
 const App = () => (
   <div className="container">
-    <Aber />
+    <NameContextProvider.Provider value="gusti">
+      <RemoteWelcome />
+    </NameContextProvider.Provider>
   </div>
 );
 ReactDOM.render(
-  <NameContextProvider.Provider value="Gustavo">
-    <App />
-  </NameContextProvider.Provider>
+  <App />
   , document.getElementById("app"));
 
 

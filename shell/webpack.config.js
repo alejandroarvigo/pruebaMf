@@ -56,9 +56,10 @@ module.exports = (_, argv) => ({
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
-        context: {
-          singleton: true,
-        }
+        'shared-context_shared-library': {
+          import: 'shared-context_shared-library',
+          requiredVersion: require('../shared/package.json').version,
+        },
       },
     }),
     new HtmlWebPackPlugin({

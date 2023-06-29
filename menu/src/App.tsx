@@ -2,22 +2,20 @@ import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
-// @ts-ignore
-import { NameContextProvider } from 'context';
+import Welcome from "./components/Welcome";
 
-const Welcome = () => {
-  const name = React.useContext(NameContextProvider);
+import { NameContextProvider } from 'shared-context_shared-library';
 
-  return <p>Welcome, {name}</p>;
-};
+
 
 const App = () => {
   return (
-    <NameContextProvider.Provider value="Billy">
-      <div className="container">
+    <div>
+      <div>Desde el Remote</div>
+      <NameContextProvider.Provider value="Billy">
         <Welcome />
-      </div>
-    </NameContextProvider.Provider>
+      </NameContextProvider.Provider>
+    </div>
   );
 }
 ReactDOM.render(<App />, document.getElementById("app"));
