@@ -1,10 +1,24 @@
 import { NameContextProvider } from 'shared-context_shared-library';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Welcome: React.FC = () => {
-  const name = React.useContext(NameContextProvider);
+  const [data, setData] = useState<{ userId: string, id: string, title: string, completed: string }>()
+  const { apiRequest } = React.useContext(NameContextProvider);
 
-  return <p>Welcome, {name}</p>;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await apiRequest({ action: 'get', url: "https://jsonplaceholder.typicode.com/todos/1" });
+        setData(res);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  return <p>{data?.title}</p>;
 };
 
 export default Welcome;
